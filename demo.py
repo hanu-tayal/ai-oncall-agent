@@ -39,7 +39,7 @@ def print_section(title):
     print("\n" + "="*80)
     print(f" {title} ".center(80, "="))
     print("="*80 + "\n")
-    time.sleep(2)  # Reduced delay after section headers
+    time.sleep(4)  # Increased delay after section headers
 
 def print_summary(title, points):
     """Print a summary section with bullet points."""
@@ -49,11 +49,11 @@ def print_summary(title, points):
     for point in points:
         print(f"• {point}")
     print("-"*80 + "\n")
-    time.sleep(3)  # Reduced delay after summary
+    time.sleep(5)  # Increased delay after summary
 
 def print_json(data):
     print(json.dumps(data, indent=2))
-    time.sleep(3)  # Reduced delay after printing JSON data
+    time.sleep(5)  # Increased delay after printing JSON data
 
 def run_command(cmd, check=True):
     """Run a command and handle errors gracefully."""
@@ -71,7 +71,7 @@ def run_command(cmd, check=True):
 def run_demo():
     print_section("NoMoreOnCall Demo")
     print("This demo will show how NoMoreOnCall analyzes and fixes errors.\n")
-    time.sleep(2)  # Reduced delay after intro
+    time.sleep(4)  # Increased delay after intro
     
     print_summary("Demo Overview", [
         "We'll demonstrate how NoMoreOnCall handles a database timeout error",
@@ -85,7 +85,7 @@ def run_demo():
     print("Starting the notification API on port 8001...")
     api_thread = threading.Thread(target=run_api, daemon=True)
     api_thread.start()
-    time.sleep(3)  # Reduced wait time for API to start
+    time.sleep(5)  # Increased wait time for API to start
     
     print_summary("API Setup Complete", [
         "Notification API is now running on port 8001",
@@ -97,9 +97,9 @@ def run_demo():
         # Demo Error 1: Database Timeout
         print_section("Demo Error 1: Database Timeout")
         print("Analyzing database timeout error (ERR_123)...")
-        time.sleep(2)  # Reduced delay before analysis
+        time.sleep(4)  # Increased delay before analysis
         run_command(["python", "debug_analyzer_v2.py", "ERR_123"])
-        time.sleep(3)  # Reduced delay after analysis
+        time.sleep(5)  # Increased delay after analysis
         
         print_summary("Error Analysis Complete", [
             "Successfully analyzed the database timeout error",
@@ -114,7 +114,7 @@ def run_demo():
         # Break down the issue file into distinct sections
         print_section("Error Details")
         print_json(issue_data["error_details"])
-        time.sleep(2)  # Reduced delay between sections
+        time.sleep(4)  # Increased delay between sections
         
         print_summary("Error Details Analysis", [
             "Identified the error type and message",
@@ -124,7 +124,7 @@ def run_demo():
         
         print_section("Code Analysis")
         print_json(issue_data["code_analysis"])
-        time.sleep(2)  # Reduced delay between sections
+        time.sleep(4)  # Increased delay between sections
         
         print_summary("Code Analysis Results", [
             "Analyzed the affected code files and functions",
@@ -134,7 +134,7 @@ def run_demo():
         
         print_section("LLM Analysis")
         print_json(issue_data["llm_analysis"])
-        time.sleep(3)  # Reduced delay before fixes
+        time.sleep(5)  # Increased delay before fixes
         
         print_summary("LLM Analysis Complete", [
             "AI model analyzed the error patterns",
@@ -145,9 +145,9 @@ def run_demo():
         # Generate code fixes
         print_section("Generating Code Fixes")
         print("Generating code fixes for the database timeout error...")
-        time.sleep(2)  # Reduced delay before generating fixes
+        time.sleep(4)  # Increased delay before generating fixes
         run_command(["python", "code_fixer.py", "issue_ERR_123.json"], check=False)
-        time.sleep(3)  # Reduced delay after generating fixes
+        time.sleep(5)  # Increased delay after generating fixes
         
         print_summary("Code Fixes Generated", [
             "Successfully generated fix recommendations",
@@ -160,7 +160,7 @@ def run_demo():
         print("\nGenerated files:")
         for file in Path(".").glob("issue_*.json"):
             print(f"- {file.name}")
-            time.sleep(1)  # Reduced delay between file listings
+            time.sleep(2)  # Increased delay between file listings
         
         print_summary("Demo Summary", [
             "Successfully demonstrated NoMoreOnCall's error handling workflow",
